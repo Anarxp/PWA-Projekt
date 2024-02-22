@@ -1,6 +1,6 @@
 export default {
-  name: "Employees PWA Project",
-  short_name: "employeesPWA",
+  name: "AnarxP",
+  short_name: "axp",
   start_url: "/",
   display: "standalone",
   background_color: "#ffffff",

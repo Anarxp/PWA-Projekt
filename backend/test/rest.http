@@ -1,0 +1,26 @@
+GET http://localhost:3000/fotos
+###
+
+POST http://localhost:3000/fotos
+Content-Type: application/json
+
+{
+    "image_url": "url55.jpg",
+    "title": "Bild 55",
+    "description": "Beschreibung 55",
+    "resolution": "1920x1080",
+    "camera": "Canon EOS 5D",
+    "datum": "2024-01-30"
+}
+###
+
+PATCH http://localhost:3000/fotos/2
+Content-Type: application/json
+
+{
+    "title": "Bild 55 geeändert",
+    "description": "Beschreibung 55 geändert"
+}
+###
+DELETE  http://localhost:3000/fotos/12
+###

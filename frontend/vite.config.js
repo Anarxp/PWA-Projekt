@@ -9,7 +9,11 @@ import manifest from "./manifest.js";
 export default defineConfig({
   server: {
     port: 8080,
+    proxy: {
+    "/fotos": "http://localhost:3000/",
   },
+  },
+  
   plugins: [
     vue({
       template: { transformAssetUrls },

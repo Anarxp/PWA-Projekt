@@ -8,11 +8,32 @@
         bordered
         :rows-per-page-options="[0]"
         :virtual-scroll-sticky-size-start="5"
-        row-key="index"
+        row-key="title"
         title="Projects"
-        :rows="rows"
+        :rows="store.data"
         :columns="columns"
-      />
+      >
+        <template v-slot:body-cell-image_url="props">
+          <q-td :props="props">
+            <img
+              :src="props.value"
+              :alt="props.row.title"
+              style="height: 128px"
+            />
+          </q-td>
+        </template>
+        <template #body-cell-actions="props">
+          <q-td :props="props">
+            <div class="q-pa-md">
+              <q-btn style="margin-right: 0.5rem" color="blue" icon="edit" />
+              <q-btn
+                @click="store.deleteData(props.row.id)"
+                color="red"
+                icon="delete"
+              /></div
+          ></q-td>
+        </template>
+      </q-table>
     </div>
   </div>
 </template>
@@ -22,11 +43,13 @@
   height: 410px;
 }
 
-.bg-transparent, .q-table__card {
+.bg-transparent,
+.q-table__card {
   background-color: hsla(0, 0%, 100%, 0.33) !important;
   backdrop-filter: blur(8px) !important;
   border-radius: 24px !important;
 }
+
 @media (max-width: 960px) {
   .q-table__card {
     background-color: hsla(0, 0%, 100%, 0.33) !important;
@@ -37,112 +60,61 @@
 </style>
 
 <script setup>
-import TitleComp from "@/components/TitleComp.vue";
-import useDefaultStore from "@/stores/defaultStore.js";
+import useImageStore from "@/stores/imageStore.js";
 
-const store = useDefaultStore();
+const store = useImageStore();
 
-const increaseCounter = () => store.increaseCounter();
+store.getData();
 
 const columns = [
   {
-    name: "image",
-    align: "center",
+    name: "image_url",
     label: "Image",
-    field: "image",
-    sortable: false,
+    align: "center",
+    field: "image_url",
+    sortable: true,
+    format: (image_url) => `http://localhost:3000/images/${image_url}`,
   },
   {
     name: "title",
-    align: "center",
     label: "Title",
+    align: "center",
     field: "title",
     sortable: true,
   },
   {
     name: "description",
     label: "Description",
+    align: "center",
     field: "description",
+    sortable: true,
+  },
+  {
+    name: "resolution",
+    label: "Resolution",
+    align: "center",
+    field: "resolution",
+    sortable: true,
+  },
+  {
+    name: "camera",
+    label: "Camera",
+    align: "center",
+    field: "camera",
+    sortable: true,
+  },
+  {
+    name: "datum",
+    label: "Date",
+    align: "center",
+    field: "datum",
+    sortable: true,
+  },
+  {
+    name: "actions",
+    label: "Actions",
+    align: "center",
     sortable: false,
   },
-];
-
-const rows = [
-  {
-    title: "Landschaftsfotografie",
-    image: "URL_zu_deinem_Bild1",
-    description: "Eine atemberaubende Landschaftsaufnahme.",
-  },
-  {
-    title: "Porträtfotografie",
-    image: "URL_zu_deinem_Bild2",
-    description: "Ein einfühlsames Porträt eines Menschen.",
-  },
-  {
-    title: "Stadtfotografie",
-    image: "URL_zu_deinem_Bild3",
-    description: "Eine faszinierende Ansicht einer Stadt bei Nacht.",
-  },
-  {
-    title: "Naturfotografie",
-    image: "URL_zu_deinem_Bild4",
-    description: "Eine Sammlung von faszinierenden Naturaufnahmen.",
-  },
-  {
-    title: "Architekturfotografie",
-    image: "URL_zu_deinem_Bild5",
-    description: "Aufnahmen von beeindruckenden architektonischen Strukturen.",
-  },
-  {
-    title: "Tierfotografie",
-    image: "URL_zu_deinem_Bild6",
-    description: "Einblicke in die Welt der Tiere durch eindrucksvolle Fotos.",
-  },
-  {
-    title: "Naturfotografie",
-    image: "URL_zu_deinem_Bild4",
-    description: "Eine Sammlung von faszinierenden Naturaufnahmen.",
-  },
-  {
-    title: "Architekturfotografie",
-    image: "URL_zu_deinem_Bild5",
-    description: "Aufnahmen von beeindruckenden architektonischen Strukturen.",
-  },
-  {
-    title: "Tierfotografie",
-    image: "URL_zu_deinem_Bild6",
-    description: "Einblicke in die Welt der Tiere durch eindrucksvolle Fotos.",
-  },
-  {
-    title: "Naturfotografie",
-    image: "URL_zu_deinem_Bild4",
-    description: "Eine Sammlung von faszinierenden Naturaufnahmen.",
-  },
-  {
-    title: "Architekturfotografie",
-    image: "URL_zu_deinem_Bild5",
-    description: "Aufnahmen von beeindruckenden architektonischen Strukturen.",
-  },
-  {
-    title: "Tierfotografie",
-    image: "URL_zu_deinem_Bild6",
-    description: "Einblicke in die Welt der Tiere durch eindrucksvolle Fotos.",
-  },
-  {
-    title: "Naturfotografie",
-    image: "URL_zu_deinem_Bild4",
-    description: "Eine Sammlung von faszinierenden Naturaufnahmen.",
-  },
-  {
-    title: "Architekturfotografie",
-    image: "URL_zu_deinem_Bild5",
-    description: "Aufnahmen von beeindruckenden architektonischen Strukturen.",
-  },
-  {
-    title: "Tierfotografie",
-    image: "URL_zu_deinem_Bild6",
-    description: "Einblicke in die Welt der Tiere durch eindrucksvolle Fotos.",
-  },
-  // Weitere Objekte hier ...
 ];
 </script>
