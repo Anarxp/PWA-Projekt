@@ -10,7 +10,7 @@
           <q-item-section> Home </q-item-section>
         </q-item>
 
-        <q-item to="/info" active clickable v-ripple>
+        <q-item to="/projects" active clickable v-ripple>
           <q-item-section avatar>
             <q-icon name="r_info" />
           </q-item-section>
