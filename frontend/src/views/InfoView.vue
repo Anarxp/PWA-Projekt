@@ -5,6 +5,7 @@
     <h3>Schauen Sie auf die Console</h3>
   </div>
 </template>
+
 <script setup>
 // import useDefaultStore from "@/stores/defaultStore.js";
 

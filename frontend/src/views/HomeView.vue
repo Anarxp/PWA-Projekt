@@ -16,9 +16,7 @@
         <template v-slot:item="props">
           <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
             <q-card>
-              <q-img
-                :src="`http://localhost:3000/images/${props.row.image_url}`"
-              >
+              <q-img :src="`http://localhost:3000/images/${props.row.image_url}`">
                 <div class="absolute-bottom text-h6">{{ props.row.title }}</div>
               </q-img>
               <q-card-section class="text-right">
@@ -56,6 +54,7 @@
             />
           </q-td>
         </template>
+
         <template #body-cell-actions="props">
           <q-td :props="props">
             <div class="q-pa-md">
@@ -75,7 +74,8 @@
           </q-td>
         </template>
       </q-table>
-      <q-dialog v-model="showEditDialog">
+
+      <q-dialog v-model="showEditDialog" persistent>
         <q-card :style="!$q.screen.lt.sm ? 'width: 67vw' : ''">
           <q-card-section>
             <div class="text-h6">Editing {{ curPhotoTitle }}</div>
@@ -89,8 +89,7 @@
                 label="New Title"
                 lazy-rules
                 :rules="[
-                  (val) =>
-                    (val && val.length > 0) || 'It has to be called something!',
+                  (val) => (val && val.length > 0) || 'It has to be called something!',
                 ]"
               />
 
@@ -114,8 +113,8 @@
 </template>
 
 <script setup>
-import useImageStore from "@/stores/imageStore.js";
-import { ref } from "vue";
+import useImageStore from '@/stores/imageStore.js';
+import { ref } from 'vue';
 
 const store = useImageStore();
 
@@ -123,7 +122,7 @@ store.getData();
 
 const showEditDialog = ref(false);
 const curPhoto = ref(null);
-const curPhotoTitle = ref("");
+const curPhotoTitle = ref('');
 
 const prepareToEdit = (photo) => {
   showEditDialog.value = true;
@@ -133,7 +132,7 @@ const prepareToEdit = (photo) => {
 
 const updatePhoto = () => {
   if (!curPhoto.value.title || curPhoto.value.title.trim().length === 0) {
-    console.log("Title is wrong!!1!11!1");
+    console.log('Title is wrong!!1!11!1');
     return;
   }
   store.updateData(curPhoto.value);
@@ -142,58 +141,58 @@ const updatePhoto = () => {
 
 const columns = [
   {
-    name: "image_url",
-    label: "Image",
-    align: "center",
-    field: "image_url",
+    name: 'image_url',
+    label: 'Image',
+    align: 'center',
+    field: 'image_url',
     sortable: true,
     format: (image_url) => `http://localhost:3000/images/${image_url}`,
   },
   {
-    name: "title",
-    label: "Title",
-    align: "center",
-    field: "title",
+    name: 'title',
+    label: 'Title',
+    align: 'center',
+    field: 'title',
     sortable: true,
   },
   {
-    name: "description",
-    label: "Description",
-    align: "center",
-    field: "description",
+    name: 'description',
+    label: 'Description',
+    align: 'center',
+    field: 'description',
     sortable: true,
   },
   {
-    name: "resolution",
-    label: "Resolution",
-    align: "center",
-    field: "resolution",
+    name: 'resolution',
+    label: 'Resolution',
+    align: 'center',
+    field: 'resolution',
     sortable: true,
   },
   {
-    name: "camera",
-    label: "Camera",
-    align: "center",
-    field: "camera",
+    name: 'camera',
+    label: 'Camera',
+    align: 'center',
+    field: 'camera',
     sortable: true,
   },
   {
-    name: "datum",
-    label: "Date",
-    align: "center",
-    field: "datum",
+    name: 'datum',
+    label: 'Date',
+    align: 'center',
+    field: 'datum',
     sortable: true,
   },
   {
-    name: "actions",
-    label: "Actions",
-    align: "center",
+    name: 'actions',
+    label: 'Actions',
+    align: 'center',
     sortable: false,
   },
 ];
 </script>
 
-  <style scoped>
+<style scoped>
 .my-sticky-virtscroll-table {
   height: 410px;
 }

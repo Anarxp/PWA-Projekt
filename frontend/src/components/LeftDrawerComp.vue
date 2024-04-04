@@ -31,13 +31,7 @@
           <q-item-section> Projects </q-item-section>
         </q-item>
 
-        <q-item
-          to="/info"
-          active
-          clickable
-          v-ripple
-          @click="$emit('toggleLeftDrawer')"
-        >
+        <q-item to="/info" active clickable v-ripple @click="$emit('toggleLeftDrawer')">
           <q-item-section avatar>
             <q-icon name="r_info" />
           </q-item-section>
@@ -48,6 +42,7 @@
     </q-scroll-area>
   </q-drawer>
 </template>
+
 <script setup>
-defineEmits(["toggleLeftDrawer"]);
+defineEmits(['toggleLeftDrawer']);
 </script>

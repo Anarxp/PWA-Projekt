@@ -5,6 +5,7 @@
     </p>
   </div>
 </template>
+
 <script setup>
 // import useDefaultStore from "@/stores/defaultStore.js";
 

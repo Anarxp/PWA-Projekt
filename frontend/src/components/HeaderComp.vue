@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-defineEmits(["toggleLeftDrawer"]);
+defineEmits(['toggleLeftDrawer']);
 </script>
 
 <style scoped>
