@@ -15,7 +15,12 @@ const useImageStore = defineStore("ImageId", () => {
     getData();
   };
 
-  return { data, getData, deleteData };
+  const updateData = async (id) => {
+    const result = await axios.delete(`/fotos/${id}`);
+    getData();
+  };
+
+  return { data, getData, deleteData, updateData };
 });
 
 export default useImageStore;
