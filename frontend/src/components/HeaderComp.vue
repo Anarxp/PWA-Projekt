@@ -5,6 +5,7 @@
         dense
         flat
         round
+        class="text-black"
         icon="r_menu"
         @click="$emit('toggleLeftDrawer')"
       />
@@ -35,10 +36,5 @@ img {
   height: 50px;
   width: 100px;
   margin-right: 10px;
-}
-.backg {
-  background-color: hsla(0, 0%, 100%, 0.33);
-  backdrop-filter: blur(8px);
-  box-shadow: 2px solid black;
 }
 </style>
