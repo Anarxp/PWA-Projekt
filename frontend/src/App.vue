@@ -26,6 +26,10 @@ const toggleLeftDrawer = () => (leftDrawerOpen.value = !leftDrawerOpen.value);
 </script>
 
 <style>
+.q-drawer {
+  background: none;
+}
+
 .backg {
   background-color: hsla(0, 0%, 100%, 0.33);
   background: hsla(0, 0%, 100%, 0.33);
