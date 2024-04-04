@@ -1,6 +1,6 @@
 <template>
   <div class="justify-center items-center">
-    <div class="q-ma-xl">
+    <div class="q-ma-sm">
       <q-table
         :grid="$q.screen.lt.md"
         card-class="backhome"
@@ -14,17 +14,29 @@
         :columns="columns"
       >
         <template v-slot:item="props">
-          <div
-            class="q-pa-xs col-xs-12 col-sm-6 col-md-4"
-          >
-            <q-card flat bordered>
-              <q-card-section class="text-center"> </q-card-section>
-              <q-separator />
-              <q-card-section
-                class="flex flex-center"
-                :style="{ fontSize: props.row.calories / 2 + 'px' }"
+          <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
+            <q-card class="my-card">
+              <q-img
+                :src="`http://localhost:3000/images/${props.row.image_url}`"
               >
-                <div>{{ props.row.calories }} g</div>
+                <div class="absolute-bottom text-h6">{{ props.row.title }}</div>
+              </q-img>
+              <q-card-section class="text-right">
+                <q-item-label caption>
+                  {{ props.row.datum }}
+                </q-item-label>
+              </q-card-section>
+              <q-card-section>
+                {{ props.row.description }}
+              </q-card-section>
+              <q-card-section class="text-center">
+                <q-btn class="q-ma-sm" color="blue" icon="edit" />
+                <q-btn
+                  class="q-ma-sm"
+                  @click="store.deleteData(props.row.id)"
+                  color="red"
+                  icon="delete"
+                />
               </q-card-section>
             </q-card>
           </div>
@@ -42,13 +54,15 @@
         <template #body-cell-actions="props">
           <q-td :props="props">
             <div class="q-pa-md">
-              <q-btn style="margin-right: 0.5rem" color="blue" icon="edit" />
+              <q-btn class="q-ma-sm" color="blue" icon="edit" />
               <q-btn
+                class="q-ma-sm"
                 @click="store.deleteData(props.row.id)"
                 color="red"
                 icon="delete"
-              /></div
-          ></q-td>
+              />
+            </div>
+          </q-td>
         </template>
       </q-table>
     </div>
