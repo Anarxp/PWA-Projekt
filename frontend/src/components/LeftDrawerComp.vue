@@ -34,7 +34,7 @@
           <q-item-section avatar>
             <q-icon name="r_view_agenda" />
           </q-item-section>
-          <q-item-section> Projects </q-item-section>
+          <q-item-section> New Project </q-item-section>
         </q-item>
 
         <q-item

@@ -11,7 +11,7 @@
         row-key="title"
         title="Projects"
         :rows="store.data"
-        :columns="columns"
+        :columns="updatedColumns"
       >
         <template v-slot:item="props">
           <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
@@ -50,7 +50,7 @@
             <q-img
               :src="props.value"
               :alt="props.row.title"
-              style="height: 100px; width: 200px"
+              style="width: 96px; height: 96px"
             />
           </q-td>
         </template>
@@ -87,7 +87,6 @@
                 filled
                 v-model="curPhoto.title"
                 label="New Title"
-                lazy-rules
                 :rules="[
                   (val) => (val && val.length > 0) || 'It has to be called something!',
                 ]"
@@ -114,7 +113,10 @@
 
 <script setup>
 import useImageStore from '@/stores/imageStore.js';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useQuasar } from 'quasar';
+
+const $q = useQuasar();
 
 const store = useImageStore();
 
@@ -190,6 +192,15 @@ const columns = [
     sortable: false,
   },
 ];
+
+const updatedColumns = computed(() => {
+  if ($q.screen.lt.lg) {
+    return columns.filter(
+      (column) => column.name !== 'resolution' && column.name !== 'camera'
+    );
+  }
+  return columns;
+});
 </script>
 
 <style scoped>
