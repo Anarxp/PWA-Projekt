@@ -6,8 +6,8 @@
   </div>
 </template>
 <script setup>
-import useDefaultStore from "@/stores/defaultStore.js";
+// import useDefaultStore from "@/stores/defaultStore.js";
 
-console.log("Anar Chingiskhuu");
-const store = useDefaultStore();
+// console.log("Anar Chingiskhuu");
+// const store = useDefaultStore();
 </script>
