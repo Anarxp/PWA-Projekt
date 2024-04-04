@@ -1,14 +1,15 @@
 <template>
-  <div class="text-h3">
-    <h1 class="text-h6 text-weight-light">-- Impressum --</h1>
-    <br />
-    <h3>Schauen Sie auf die Console</h3>
+  <div>
+    <q-card class="q-pa-md backg">
+      <q-card-section>
+        <h4 class="text-bold">Impressum</h4>
+      </q-card-section>
+      <q-card-section>
+        Anar Erdene Chingiskhuu<br />
+        2024
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 
-<script setup>
-// import useDefaultStore from "@/stores/defaultStore.js";
-
-// console.log("Anar Chingiskhuu");
-// const store = useDefaultStore();
-</script>
+<script setup></script>
