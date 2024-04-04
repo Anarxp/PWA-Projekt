@@ -10,7 +10,7 @@
           label="Let's take a picture!"
           icon="camera"
           @click="
-            // enabled = true;
+            enabled = true;
             showCameraDialog()
           "
         />
